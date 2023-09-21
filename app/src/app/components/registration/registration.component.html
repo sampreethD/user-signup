@@ -1,2 +1,93 @@
-
-<p>registration works!</p>
+<div class="container">
+  <mat-card class="card-container">
+    <form [formGroup]="userForm">
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="John Doe"
+          formControlName="userName"
+        />
+        <mat-error *ngIf="userForm.get('userName')?.hasError('required')">
+          User Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="JohnDoe@test.com"
+          formControlName="email"
+        />
+        <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <h3>Address</h3>
+      <div formArrayName="addresses">
+        <div *ngFor="let address of addresses.controls; let i = index">
+          <div class="address-container" [formGroupName]="i">
+            <mat-form-field>
+              <mat-label>City</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Bengaluru"
+                formControlName="city"
+              />
+              <mat-error *ngIf="address.get('city')?.hasError('required')">
+                City is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>State</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="karnataka"
+                formControlName="state"
+              />
+              <mat-error *ngIf="address.get('state')?.hasError('required')">
+                State is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Zip Code</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="56012"
+                formControlName="zipCode"
+              />
+              <mat-error *ngIf="address.get('zipCode')?.hasError('required')">
+                Zip Code is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <button
+              [hidden]="addresses.controls.length === 1"
+              mat-raised-button
+              (click)="removeItem(i)"
+              color="warn"
+            >
+              Delete Address
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="addItem()">
+        Add Address
+      </button>
+      <button
+        [disabled]="!userForm.valid"
+        mat-raised-button
+        (click)="submitForm()"
+      >
+        Register
+      </button>
+    </form>
+  </mat-card>
+</div>

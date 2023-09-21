@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-toolbar class="header">
+    <span class="logo-icon">LOGO</span>
+    <mat-button-toggle-group
+      (change)="handleToggleBtn($event.value)"
+      name="Toggle"
+      aria-label="Toggle-button"
+    >
+      <mat-button-toggle value="registration">Registration</mat-button-toggle>
+      <mat-button-toggle value="user-details">User Details</mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-icon
+      class="account-icon"
+      aria-hidden="false"
+      aria-label="Account"
+      fontIcon="account_circle"
+    ></mat-icon>
+  </mat-toolbar>
+</div>

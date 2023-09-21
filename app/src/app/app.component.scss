@@ -1,38 +1,24 @@
 @import "../styles.scss";
-@mixin cursor {
-  cursor: pointer;
-}
 
 .container {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    .logo-icon {
-      @include cursor();
-      width: 3rem;
-      height: 3rem;
-      background-color: #ae9898;
-      border-radius: 50%;
-      font-size: $font-size;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .account-icon {
-      @include cursor();
-      font-size: 3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: inherit;
-    }
-  }
-
   main {
-    min-height: 100vh
+    padding: 1rem;
   }
   footer {
-    position: absolute;
+    h3 {
+      padding: 0 1rem;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
     bottom: 0;
+    width: 100%;
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
+    z-index: 1;
+    height: var(--mat-toolbar-standard-height);
   }
 }
