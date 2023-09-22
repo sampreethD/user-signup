@@ -5,6 +5,7 @@
       (change)="handleToggleBtn($event.value)"
       name="Toggle"
       aria-label="Toggle-button"
+      [value]="initialToggle"
     >
       <mat-button-toggle value="registration">Registration</mat-button-toggle>
       <mat-button-toggle value="user-details">User Details</mat-button-toggle>

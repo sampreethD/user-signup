@@ -6,11 +6,13 @@
         <input
           type="text"
           matInput
+          #userName
+          maxlength="10"
           placeholder="John Doe"
           formControlName="userName"
         />
-        <mat-error *ngIf="userForm.get('userName')?.hasError('required')">
-          User Name is <strong>required</strong>
+        <mat-error>
+          {{getErrorForField(userForm.get('userName'), 'userName') }}
         </mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -18,11 +20,12 @@
         <input
           type="email"
           matInput
+          #email
           placeholder="JohnDoe@test.com"
           formControlName="email"
         />
-        <mat-error *ngIf="userForm.get('email')?.hasError('required')">
-          Email is <strong>required</strong>
+        <mat-error>
+           {{getErrorForField(userForm.get('email'), 'Email') }}
         </mat-error>
       </mat-form-field>
       <mat-divider></mat-divider>
@@ -35,11 +38,13 @@
               <input
                 type="text"
                 matInput
+                #city
+                maxlength="20"
                 placeholder="Bengaluru"
                 formControlName="city"
               />
-              <mat-error *ngIf="address.get('city')?.hasError('required')">
-                City is <strong>required</strong>
+              <mat-error>
+                {{getErrorForField(address.get('city'), 'City') }}
               </mat-error>
             </mat-form-field>
             <mat-form-field>
@@ -47,23 +52,27 @@
               <input
                 type="text"
                 matInput
+                maxlength="20"
+                #state
                 placeholder="karnataka"
                 formControlName="state"
               />
-              <mat-error *ngIf="address.get('state')?.hasError('required')">
-                State is <strong>required</strong>
+              <mat-error>
+                {{getErrorForField(address.get('state'),'state')}}
               </mat-error>
             </mat-form-field>
             <mat-form-field>
               <mat-label>Zip Code</mat-label>
               <input
-                type="text"
+                type="tel"
                 matInput
+                #zipCode
+                maxlength="5"
                 placeholder="56012"
                 formControlName="zipCode"
               />
-              <mat-error *ngIf="address.get('zipCode')?.hasError('required')">
-                Zip Code is <strong>required</strong>
+              <mat-error>
+                {{getErrorForField(address.get('zipCode'),'zipCode')}}
               </mat-error>
             </mat-form-field>
             <button

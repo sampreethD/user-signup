@@ -1,7 +1,7 @@
 export interface IUserDetails {
     userName: string;
     email: string;
-    address: IUserAddress[];
+    address: Array<IUserAddress>;
 }
 
 export interface IUserAddress {

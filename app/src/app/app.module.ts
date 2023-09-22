@@ -30,7 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatIconModule,
     MatButtonToggleModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

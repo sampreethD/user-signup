@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ErrorHandlerService {
-  private errorMessages: { [key: string]: string } = {};
+  constructor() {}
+
+  handleRequiredError(fieldName: string): string {
+    return `${fieldName} is required.`;
+  }
+
+  handlePatternError(fieldName: string): string {
+    return `${fieldName} does not match required format`;
+  }
 }
