@@ -1,0 +1,33 @@
+@import "../../../styles.scss";
+
+
+.container {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    .logo-icon {
+      @include cursor();
+      width: 3rem;
+      height: 3rem;
+      background-color: #ae9898;
+      border-radius: 50%;
+      font-size: $font-size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    mat-button-toggle-group {
+      font-size: $font-size-sm;
+    }
+
+    .account-icon {
+      @include cursor();
+      font-size: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: inherit;
+    }
+  }
+}

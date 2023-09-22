@@ -1,1 +1,34 @@
-<p>user-details works!</p>
+<ng-container *ngIf="userDetailsList.length; else noData">
+<table mat-table [dataSource]="userDetailsList" class="mat-elevation-z8">
+  <ng-container matColumnDef="User Name">
+    <th mat-header-cell *matHeaderCellDef>User Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Address">
+    <th mat-header-cell *matHeaderCellDef>Address</th>
+    <td mat-cell *matCellDef="let element">
+     {{element.addresses | arrayToString}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <button mat-raised-button (click)="removeColumn(i)" color="warn">
+        Delete Address
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+</ng-container>
+<ng-template #noData>
+  <h3>No User Registered!!, Try again after some time</h3>
+</ng-template>

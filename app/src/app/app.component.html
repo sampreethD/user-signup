@@ -1,21 +1,11 @@
 <div class="container">
-<header>
-  <mat-toolbar class="header">
-    <span class="logo-icon">LOGO</span>
-    <mat-icon
-    class="account-icon"
-      aria-hidden="false"
-      aria-label="Account"
-      fontIcon="account_circle"
-    ></mat-icon>
-  </mat-toolbar>
-</header>
+  <app-header></app-header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
-
-<footer class="footer">
-  <p>footer</p>
-</footer>
+  <footer class="footer">
+    <h3>© Copy Rights</h3>
+    <h3>August 2023</h3>
+  </footer>
 </div>

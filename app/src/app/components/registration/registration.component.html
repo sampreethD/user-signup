@@ -1,2 +1,102 @@
-
-<p>registration works!</p>
+<div class="container">
+  <mat-card class="card-container">
+    <form [formGroup]="userForm">
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input
+          type="text"
+          matInput
+          #userName
+          maxlength="10"
+          placeholder="John Doe"
+          formControlName="userName"
+        />
+        <mat-error>
+          {{getErrorForField(userForm.get('userName'), 'userName') }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          #email
+          placeholder="JohnDoe@test.com"
+          formControlName="email"
+        />
+        <mat-error>
+           {{getErrorForField(userForm.get('email'), 'Email') }}
+        </mat-error>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <h3>Address</h3>
+      <div formArrayName="addresses">
+        <div *ngFor="let address of addresses.controls; let i = index">
+          <div class="address-container" [formGroupName]="i">
+            <mat-form-field>
+              <mat-label>City</mat-label>
+              <input
+                type="text"
+                matInput
+                #city
+                maxlength="20"
+                placeholder="Bengaluru"
+                formControlName="city"
+              />
+              <mat-error>
+                {{getErrorForField(address.get('city'), 'City') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>State</mat-label>
+              <input
+                type="text"
+                matInput
+                maxlength="20"
+                #state
+                placeholder="karnataka"
+                formControlName="state"
+              />
+              <mat-error>
+                {{getErrorForField(address.get('state'),'state')}}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Zip Code</mat-label>
+              <input
+                type="tel"
+                matInput
+                #zipCode
+                maxlength="5"
+                placeholder="56012"
+                formControlName="zipCode"
+              />
+              <mat-error>
+                {{getErrorForField(address.get('zipCode'),'zipCode')}}
+              </mat-error>
+            </mat-form-field>
+            <button
+              [hidden]="addresses.controls.length === 1"
+              mat-raised-button
+              (click)="removeItem(i)"
+              color="warn"
+            >
+              Delete Address
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="primary" (click)="addItem()">
+        Add Address
+      </button>
+      <button
+        [disabled]="!userForm.valid"
+        mat-raised-button
+        (click)="submitForm()"
+      >
+        Register
+      </button>
+    </form>
+  </mat-card>
+</div>

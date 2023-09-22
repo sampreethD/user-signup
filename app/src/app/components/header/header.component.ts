@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+})
+export class HeaderComponent {
+  initialToggle = window.location.pathname.replace('/', '') || 'registration';
+  constructor(private router: Router) {}
+
+  handleToggleBtn(route: any) {
+    this.router.navigate([route]);
+  }
+}
